@@ -1,5 +1,6 @@
 import React ,{Fragment,useState} from 'react';
 import uuid from 'uuid/v4';
+import PropTypes from 'prop-types';
 
 const Formulario = ({crearCita})=>{
     //Crear state de citas
@@ -58,56 +59,74 @@ const Formulario = ({crearCita})=>{
             {error?<p className="alerta-error">Todos los campos son obligatorios</p> :null}
 
             <form onSubmit={submitCita}>
-                <label>Nombre mascota</label>
-                <input
-                    type="text"
-                    name="mascota"
-                    className="u-full-width"
-                    placeholder="Nombre Mascota"
-                    onChange={actualizarState}
-                    value={mascota}
-                />
-                <label>Nombre Dueño</label>
-                <input
-                    type="text"
-                    name="propietario"
-                    className="u-full-width"
-                    placeholder="Nombre Dueño de la mascota"
-                    onChange={actualizarState}
-                    value={propietario}
-                />
-                <label>Fecha</label>
-                <input
-                    type="date"
-                    name="fecha"
-                    className="u-full-width"
-                    onChange={actualizarState}
-                    value={fecha}
-                />
-                <label>Hora</label>
-                <input
-                    type="time"
-                    name="hora"
-                    className="u-full-width"
-                    onChange={actualizarState}
-                    value={hora}
-                />
-                <label>Sintomas</label>
-                <textarea
-                    className ="u-full-width"
-                    name="sintomas"                    
-                    onChange={actualizarState}
-                    value={sintomas}
-                ></textarea>
-                <button
-                    type="submit"
-                    className="u-full-width button-primary"
                 
-                >Agregar Cita</button>
+                <div className="form-group">
+                    <label for="nombreMascota">Nombre mascota</label>
+                    <input 
+                        type="text"
+                        name="mascota"
+                        className="form-control" 
+                        id="nombreMascota" 
+                        placeholder="Nombre Mascota"
+                        onChange={actualizarState}
+                        value={mascota}/>
+                </div>
+                <div className="form-group">
+                    <label for="nombreDueño">Nombre Dueño</label>
+                    <input 
+                        type="text"
+                        name="propietario"
+                        className="form-control" 
+                        id="nombreDueño" 
+                        placeholder="Nombre Dueño de la mascota"
+                        onChange={actualizarState}
+                        value={propietario}/>
+                </div>
+                <div className="form-group">
+                    <label for="campoFecha">Fecha</label>
+                    
+                    <input 
+                        type="date"
+                        name="fecha"
+                        className="form-control" 
+                        id="campoFecha" 
+                        onChange={actualizarState}
+                        value={fecha}/>
+                </div>
+                <div className="form-group">
+                    <label for="campoHora">Hora</label>
+                    <input 
+                        type="time"
+                        name="hora"
+                        className="form-control" 
+                        id="campoHora" 
+                        onChange={actualizarState}
+                        value={hora}/>
+                </div>
+                <div class="form-group">
+                    <label for="campoSintomas">Sintomas</label>
+                    <textarea 
+                        class="form-control" 
+                        id="campoSintomas" 
+                        rows="3"
+                        name="sintomas"                    
+                        onChange={actualizarState}
+                        value={sintomas}
+                        ></textarea>
+                </div>
+                <div class="form-group">
+                <button type="submit" class="button agregar btn">AGREGAR CITA</button>
+
+                </div>
             </form>
         </Fragment>
     );
 
+}
+
+//Similar a un tipeChecking  o documentar un componente
+Formulario.propTypes = {
+    crearCita : PropTypes.func.isRequired
 }
 
 export default Formulario;
